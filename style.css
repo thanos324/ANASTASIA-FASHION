@@ -1295,8 +1295,9 @@ footer {
 .popup-modal {
   z-index: 2101;
 }
-html, body { width: 100%; overflow-x: hidden; }
+html, body { width: 100%; overflow-x: clip; }
 img { max-width: 100%; height: auto; }
+
 
 
 
