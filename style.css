@@ -25,7 +25,7 @@ body {
 
 /* =============== HEADER =============== */
 header {
-  position: sticky;
+  position: relative;
   top: 0;
   z-index: 1000;
   background: #fffaf5;
@@ -1297,4 +1297,5 @@ footer {
 }
 html, body { width: 100%; overflow-x: hidden; }
 img { max-width: 100%; height: auto; }
+
 
