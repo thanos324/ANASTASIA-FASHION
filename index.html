@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8">
+  <title>ANASTASIA FASHION</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <h1>ANASTASIA FASHION</h1>
+    <nav>
+      <a href="#"><i class="fa-solid fa-house"></i> Αρχική</a>
+      <a href="#" class="cart-icon" id="cart-icon">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <span class="cart-count" id="cart-count">0</span>
+      </a>
+    </nav>
+  </header>
+
+  <!-- 🔹 ΡΟΖ EXOFYLLO ΠΑΝΩ ΑΠΟ ΟΛΟ ΤΟ SITE -->
+  <div id="intro-overlay">
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="hero-text">
+          <h2>Νέα συλλογή παπουτσιών και ρούχων</h2>
+          <p>Διαλέξτε επώνυμες μάρκες ρούχων στην καλύτερη τιμή της αγοράς!</p>
+          <button class="hero-btn">Δες τα προϊόντα μας</button>
+        </div>
+
+        <div class="hero-image-container">
+          <img
+            src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpaperaccess.com%2Ffull%2F4322577.png&f=1&nofb=1&ipt=2f3536a0c15499f035f443b5e0ed618afa164d91e04c7b7b3ed12b446a2484ee"
+            alt="Συλλογή ρούχων">
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- 🔹 ΚΥΡΙΟ SITE – ΞΕΚΙΝΑΕΙ ΚΡΥΦΟ -->
+  <main class="site-hidden">
+    <!-- PRODUCTS SECTION -->
+    <section class="products-section">
+      <div class="products-header">
+        <h2>ΣΥΛΛΟΓΗ ΠΡΟΪΟΝΤΩΝ</h2>
+        <p>Διάλεξε κατηγορία από τη συλλογή ANASTASIA FASHION.</p>
+      </div>
+
+      <div class="product-filters">
+        <button type="button" class="filter-btn active" data-filter="all">Όλα</button>
+        <button type="button" class="filter-btn" data-filter="clothes">Μπλούζες</button>
+        <button type="button" class="filter-btn" data-filter="trousers">Παντελόνια</button>
+      </div>
+
+<div id="products-grid">
+  <!-- 1: ESSENTIAL BLACK TEE -->
+  <article class="product-card" data-category="clothes">
+    <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80"
+         alt="Μαύρο basic t-shirt">
+    <h3>ESSENTIAL BLACK TEE</h3>
+    <p class="price">29,99 €</p>
+    <button>Προσθήκη στο καλάθι</button>
+  </article>
+
+  <!-- 2: OVERSIZED WHITE HOODIE -->
+  <article class="product-card" data-category="clothes">
+    <img src="https://images.unsplash.com/photo-1581655353564-df123a1eb820?auto=format&fit=crop&w=800&q=80"
+         alt="Λευκό oversized φούτερ με κουκούλα">
+    <h3>OVERSIZED WHITE HOODIE</h3>
+    <p class="price">59,99 €</p>
+    <button>Προσθήκη στο καλάθι</button>
+  </article>
+
+  <!-- 3: ATHLETIC BLUE SWEATSHIRT -->
+  <article class="product-card" data-category="clothes">
+    <img src="https://images.unsplash.com/photo-1503342394128-c104d54dba01?auto=format&fit=crop&w=800&q=80"
+         alt="Μπλε αθλητική μπλούζα φούτερ">
+    <h3>ATHLETIC BLUE SWEATSHIRT</h3>
+    <p class="price">44,99 €</p>
+    <button>Προσθήκη στο καλάθι</button>
+  </article>
+
+  <!-- 4: CASHMERE BEIGE CREWNECK -->
+  <article class="product-card" data-category="clothes">
+    <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=800&q=80"
+         alt="Μπεζ cashmere μπλούζα">
+    <h3>CASHMERE BEIGE CREWNECK</h3>
+    <p class="price">89,99 €</p>
+    <button>Προσθήκη στο καλάθι</button>
+  </article>
+
+  <!-- 5: GREY RIBBED SWEATER -->
+  <article class="product-card" data-category="clothes">
+    <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=800&q=80"
+         alt="Γκρι πλεκτή μπλούζα ριμπ">
+    <h3>GREY RIBBED SWEATER</h3>
+    <p class="price">49,99 €</p>
+    <button>Προσθήκη στο καλάθι</button>
+  </article>
+
+  <!-- 6: BLACK ZIP-UP HOODIE -->
+  <article class="product-card" data-category="clothes">
+    <img src="https://images.unsplash.com/photo-1586790170083-2f9ceadc732d?auto=format&fit=crop&w=800&q=80"
+         alt="Μαύρο φούτερ με φερμουάρ">
+    <h3>BLACK ZIP-UP HOODIE</h3>
+    <p class="price">54,99 €</p>
+    <button>Προσθήκη στο καλάθι</button>
+  </article>
+
+  <!-- 7: MINIMAL WHITE TEE -->
+  <article class="product-card" data-category="clothes">
+    <img src="https://images.unsplash.com/photo-1527718641255-324f8e2d0421?auto=format&fit=crop&w=800&q=80"
+         alt="Λευκό t-shirt με μινιμαλιστικό design">
+    <h3>MINIMAL WHITE TEE</h3>
+    <p class="price">34,99 €</p>
+    <button>Προσθήκη στο καλάθι</button>
+  </article>
+
+  <!-- 8: GREY PULLOVER HOODIE -->
+  <article class="product-card" data-category="clothes">
+    <img src="https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?auto=format&fit=crop&w=800&q=80"
+         alt="Γκρι φούτερ με κουκούλα">
+    <h3>GREY PULLOVER HOODIE</h3>
+    <p class="price">52,99 €</p>
+    <button>Προσθήκη στο καλάθι</button>
+  </article>
+
+  <!-- 9: BEIGE CASUAL PANTS -->
+  <article class="product-card" data-category="trousers">
+    <img src="https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=800&q=80"
+         alt="Μπεζ casual παντελόνι">
+    <h3>BEIGE CASUAL PANTS</h3>
+    <p class="price">59,99 €</p>
+    <button>Προσθήκη στο καλάθι</button>
+  </article>
+
+  <!-- 10: DARK SLIM JEANS -->
+  <article class="product-card" data-category="trousers">
+    <img src="https://images.unsplash.com/photo-1543076447-215ad9ba6923?auto=format&fit=crop&w=800&q=80"
+         alt="Σκούρο τζιν slim fit">
+    <h3>DARK SLIM JEANS</h3>
+    <p class="price">69,99 €</p>
+    <button>Προσθήκη στο καλάθι</button>
+  </article>
+
+  <!-- 11: BLACK JOGGER PANTS -->
+  <article class="product-card" data-category="trousers">
+    <img src="https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=800&q=80"
+         alt="Μαύρο jogger παντελόνι">
+    <h3>BLACK JOGGER PANTS</h3>
+    <p class="price">49,99 €</p>
+    <button>Προσθήκη στο καλάθι</button>
+  </article>
+
+  <!-- 12: LIGHT BLUE STRAIGHT JEANS -->
+  <article class="product-card" data-category="trousers">
+    <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80&sat=-50"
+         alt="Ανοιχτό μπλε τζιν straight fit">
+    <h3>LIGHT BLUE STRAIGHT JEANS</h3>
+    <p class="price">64,99 €</p>
+    <button>Προσθήκη στο καλάθι</button>
+  </article>
+</div>
+
+
+    </section>
+  </main>
+
+  <!-- CART POPUP OVERLAY -->
+  <div id="cart-overlay" class="cart-overlay"></div>
+
+  <!-- CART POPUP -->
+  <div id="cart-popup" class="cart-popup">
+    <div class="cart-popup-header">
+      <h3><i class="fa-solid fa-cart-shopping"></i> Το καλάθι σου</h3>
+      <button class="cart-close" id="cart-close">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    
+    <div class="cart-items" id="cart-items">
+      <!-- Εδώ θα προστίθενται τα προϊόντα με JS -->
+      <div class="cart-empty">
+        <i class="fa-solid fa-cart-arrow-down"></i>
+        <p>Το καλάθι σου είναι άδειο</p>
+      </div>
+    </div>
+    
+    <div class="cart-popup-footer">
+      <div class="cart-total">
+        <span>Σύνολο:</span>
+        <span class="total-amount" id="cart-total">0,00 €</span>
+      </div>
+      <button class="cart-checkout" id="checkout-btn">
+        <i class="fa-solid fa-lock"></i> Ολοκλήρωση παραγγελίας
+      </button>
+    </div>
+  </div>
+
+  <!-- CHECKOUT POPUP (ΣΤΟΙΧΕΙΑ ΠΑΡΑΓΓΕΛΙΑΣ) -->
+<div id="checkout-popup" class="cart-popup">
+  <div class="cart-popup-header">
+    <h3><i class="fa-solid fa-user"></i> Στοιχεία αποστολής</h3>
+    <button class="cart-close" id="checkout-close">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+  </div>
+
+  <form id="checkout-form" class="checkout-form">
+    <div class="checkout-row">
+      <div class="checkout-field">
+        <label for="first-name">Όνομα</label>
+        <input type="text" id="first-name" name="firstName" required>
+      </div>
+      <div class="checkout-field">
+        <label for="last-name">Επώνυμο</label>
+        <input type="text" id="last-name" name="lastName" required>
+      </div>
+    </div>
+
+    <div class="checkout-field">
+      <label for="address1">Διεύθυνση 1</label>
+      <input type="text" id="address1" name="address1" required>
+    </div>
+
+    <div class="checkout-field">
+      <label for="address2">Διεύθυνση 2 (προαιρετικό)</label>
+      <input type="text" id="address2" name="address2">
+    </div>
+
+    <div class="checkout-row">
+      <div class="checkout-field">
+        <label for="postcode">Ταχυδρομικός κώδικας</label>
+        <input type="text" id="postcode" name="postcode" required>
+      </div>
+      <div class="checkout-field">
+        <label for="phone">Τηλέφωνο επικοινωνίας</label>
+        <input type="tel" id="phone" name="phone" required>
+      </div>
+    </div>
+
+    <div class="checkout-field">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required>
+    </div>
+  </form>
+
+  <div class="cart-popup-footer">
+    <div class="cart-total">
+      <span>Σύνολο:</span>
+      <span class="total-amount" id="checkout-total">0,00 €</span>
+    </div>
+    <button class="cart-checkout" id="checkout-confirm">
+      <i class="fa-solid fa-check"></i> Επιβεβαίωση παραγγελίας
+    </button>
+  </div>
+</div>
+
+<!-- MESSAGE POPUP (SUCCESS / ERROR) -->
+<div id="message-popup" class="cart-popup message-popup">
+  <div class="cart-popup-header" id="message-popup-header">
+    <h3 id="message-title">
+      <i class="fa-solid fa-circle-check"></i> Μήνυμα
+    </h3>
+    <button class="cart-close" id="message-close">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+  </div>
+
+  <div class="message-body">
+    <p id="message-text">Κείμενο μηνύματος...</p>
+  </div>
+
+  <div class="cart-popup-footer">
+    <button class="cart-checkout" id="message-ok">
+      <i class="fa-solid fa-check"></i> ΟΚ
+    </button>
+  </div>
+</div>
+
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2025 ANASTASIA FASHION</p>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script src="app.js"></script>
+</body>
+</html>
+
