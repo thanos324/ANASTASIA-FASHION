@@ -20,20 +20,23 @@ body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   color: var(--text-main);
   background: linear-gradient(135deg, #f7f3ee, #f0efeb);
+  font-size: 16px;
 }
 
 /* =============== HEADER =============== */
 header {
   position: sticky;
   top: 0;
-  z-index: 100;
-  background: rgba(255, 255, 255, 0.9);
+  z-index: 1000;
+  background: #fffaf5;
   backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-  padding: 16px 40px;
+  padding: 14px 18px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
 }
 
 header h1 {
@@ -41,12 +44,15 @@ header h1 {
   font-weight: 300;
   letter-spacing: 6px;
   text-transform: uppercase;
+  margin: 0;
+  line-height: 1.1;
 }
 
 /* =============== NAVIGATION =============== */
 nav {
   display: flex;
-  gap: 12px;
+  align-items: center;
+  gap: 14px;
 }
 
 nav a {
@@ -82,12 +88,39 @@ nav a:active {
   transform: translateY(1px) scale(0.97);
 }
 
-/* =============== MAIN LAYOUT =============== */
-main {
-  padding: 40px 40px 80px;
+.cart-icon {
+  position: relative;
+  text-decoration: none;
+  font-size: 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
 }
 
-/* main αρχικά κρυφό (μέχρι να πατήσεις το hero) */
+.cart-count {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  background: #e07a5f;
+  color: white;
+  border-radius: 50%;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+/* =============== MAIN LAYOUT =============== */
+main,
+.page-content {
+  padding: 18px 40px 80px;
+  padding-top: 18px;
+}
+
 main.site-hidden {
   opacity: 0;
   transform: translateY(20px);
@@ -101,7 +134,7 @@ main.site-visible {
   pointer-events: auto;
 }
 
-/* =============== HERO (EXOFYLLO) =============== */
+/* =============== HERO =============== */
 .hero {
   max-width: 1100px;
   margin: 80px auto;
@@ -130,7 +163,7 @@ main.site-visible {
   letter-spacing: 2px;
   text-transform: uppercase;
   color: #111;
-  margin-bottom: 16px;
+  margin: 0 0 16px 0;
 }
 
 .hero-text p {
@@ -138,10 +171,9 @@ main.site-visible {
   color: #555;
   max-width: 420px;
   line-height: 1.7;
-  margin-bottom: 26px;
+  margin: 0 0 26px 0;
 }
 
-/* κουμπί hero */
 .hero-btn {
   padding: 14px 40px;
   border-radius: 999px;
@@ -154,6 +186,7 @@ main.site-visible {
   cursor: pointer;
   box-shadow: 0 8px 20px rgba(224, 122, 95, 0.4);
   transition: all 0.25s ease;
+  width: max-content;
 }
 
 .hero-btn:hover {
@@ -163,7 +196,6 @@ main.site-visible {
   box-shadow: 0 8px 20px rgba(242, 154, 164, 0.35);
 }
 
-/* hero fade-out όταν πατηθεί */
 .hero.hero-exit {
   opacity: 0;
   transform: translateY(-20px) scale(0.98);
@@ -171,7 +203,6 @@ main.site-visible {
   transition: opacity 0.7s ease, transform 0.7s ease, filter 0.7s ease;
 }
 
-/* εικόνα hero */
 .hero-image-container {
   flex: 1;
   max-width: 430px;
@@ -182,8 +213,11 @@ main.site-visible {
 
 .hero-image-container img {
   width: 100%;
+  max-width: 420px;
+  height: auto;
   display: block;
   object-fit: cover;
+  border-radius: 18px;
   transform: scale(1.02);
   transition: transform 0.6s ease;
 }
@@ -192,7 +226,7 @@ main.site-visible {
   transform: scale(1.06);
 }
 
-/* =============== OVERLAY ΠΟΥ ΚΑΛΥΠΤΕΙ ΟΛΟ ΤΟ SITE =============== */
+/* =============== OVERLAY =============== */
 #intro-overlay {
   position: fixed;
   inset: 0;
@@ -204,18 +238,19 @@ main.site-visible {
   transition: opacity 0.7s ease, transform 0.7s ease;
 }
 
-/* όταν κρύβεται */
 #intro-overlay.intro-hide {
   opacity: 0;
   transform: translateY(-20px);
   pointer-events: none;
 }
 
-/* =============== PRODUCTS SECTION =============== */
-.products-section {
+/* =============== PRODUCTS =============== */
+.products-section,
+.products {
   max-width: 1200px;
   margin: 40px auto 120px;
   padding: 0 24px;
+  padding-bottom: 18px;
 }
 
 .products-header {
@@ -255,13 +290,20 @@ main.site-visible {
   line-height: 1.6;
 }
 
-/* φίλτρα */
-.product-filters {
+/* FILTERS */
+.product-filters,
+.categories,
+.filters,
+.category-buttons {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
   justify-content: center;
   margin-bottom: 32px;
+  overflow-x: auto;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+  padding: 8px 12px;
 }
 
 .filter-btn {
@@ -290,26 +332,27 @@ main.site-visible {
   color: #ffffff;
 }
 
-/* grid προϊόντων */
-#products-grid {
+/* PRODUCT GRID */
+#products-grid,
+.products-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 30px;
+  padding: 12px;
 }
 
-/* κάρτα προϊόντος */
+/* PRODUCT CARD */
 .product-card {
   background: var(--card-bg);
-  border-radius: 12px;
-  overflow: hidden;
+  border-radius: 18px;
+  overflow: visible !important;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
   border: 1px solid rgba(0, 0, 0, 0.04);
   transition: all 0.3s ease;
   position: relative;
-
-  /* αρχικά κρυφή για zoom-in + fade */
   opacity: 0;
   transform: translateY(18px) scale(0.96);
+  padding-bottom: 18px !important;
 }
 
 .product-card:hover {
@@ -321,19 +364,40 @@ main.site-visible {
 .product-card img {
   width: 100%;
   height: 320px;
+  aspect-ratio: 4 / 3;
   object-fit: cover;
   object-position: center;
   display: block;
+  border-radius: 16px;
 }
 
-/* τίτλος + τιμή */
 .product-card h3 {
-  font-size: 15px;
-  font-weight: 500;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
   padding: 18px 18px 6px;
   color: #222222;
-  letter-spacing: 0.5px;
   text-transform: uppercase;
+  margin-bottom: 10px;
+  position: relative;
+  padding-bottom: 6px;
+}
+
+.product-card h3::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 32%;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 2px;
+  opacity: 0.8;
+  transition: width 0.3s ease;
+}
+
+.product-card:hover h3::after {
+  width: 60%;
 }
 
 .product-card .price {
@@ -344,35 +408,46 @@ main.site-visible {
   letter-spacing: 0.8px;
 }
 
-/* κουμπί κάρτας */
-.product-card button {
-  margin: 0 18px 18px;
+.product-card button,
+.product-card .add-to-cart,
+.buy-btn {
+  margin: 14px 18px 10px !important;
   width: calc(100% - 36px);
-  padding: 12px 18px;
-  border-radius: 999px;
+  padding: 14px 16px;
+  border-radius: 18px;
   border: none;
   background-color: var(--accent);
   color: #ffffff;
-  font-size: 13px;
-  font-weight: 500;
+  font-size: 14px;
+  font-weight: 700;
   letter-spacing: 1px;
   cursor: pointer;
   transition: all 0.25s ease;
   text-transform: uppercase;
+  line-height: 1.2 !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 52px;
+  white-space: nowrap;
 }
 
-.product-card button:hover {
+.product-card button:hover,
+.product-card .add-to-cart:hover,
+.buy-btn:hover {
   background-color: var(--accent-dark);
   transform: translateY(-2px);
   box-shadow: 0 6px 16px rgba(224, 122, 95, 0.3);
 }
 
-.product-card button:active {
+.product-card button:active,
+.product-card .add-to-cart:active,
+.buy-btn:active {
   transform: translateY(1px) scale(0.98);
   box-shadow: 0 2px 8px rgba(224, 122, 95, 0.2);
 }
 
-/* animation zoom-in + fade */
 .product-card.card-animate-in {
   animation: productIn 0.65s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
 }
@@ -408,59 +483,7 @@ footer {
   background: rgba(255, 255, 255, 0.85);
 }
 
-/* =============== RESPONSIVE =============== */
-@media (max-width: 768px) {
-  header {
-    padding: 12px 16px;
-  }
-
-  header h1 {
-    font-size: 18px;
-    letter-spacing: 4px;
-  }
-
-  nav {
-    gap: 6px;
-  }
-
-  nav a {
-    padding: 6px 12px;
-    font-size: 11px;
-  }
-
-  main {
-    padding: 24px 16px 60px;
-  }
-
-  .hero {
-    padding: 28px 22px;
-    margin: 24px 16px 40px;
-  }
-
-  .hero-inner {
-    flex-direction: column-reverse;
-    gap: 24px;
-  }
-
-  .hero-text h2 {
-    font-size: 22px;
-    letter-spacing: 1.5px;
-  }
-
-  .hero-text p {
-    font-size: 14px;
-  }
-
-  .hero-image-container {
-    max-width: 100%;
-  }
-
-  .products-section {
-    padding: 0 8px;
-  }
-}
-
-/* FLYING ITEM STYLES */
+/* =============== ANIMATIONS =============== */
 .flying-item {
   position: fixed;
   width: 40px;
@@ -485,32 +508,6 @@ footer {
   100% { box-shadow: 0 0 20px rgba(224, 122, 95, 0.7); }
 }
 
-/* CART ICON ANIMATIONS */
-.cart-icon {
-  position: relative;
-  text-decoration: none;
-  font-size: 1.5rem;
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.cart-count {
-  position: absolute;
-  top: -8px;
-  right: -8px;
-  background: #e07a5f;
-  color: white;
-  border-radius: 50%;
-  width: 20px;
-  height: 20px;
-  font-size: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-}
-
 .cart-icon.shake {
   animation: cart-shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
 }
@@ -531,7 +528,6 @@ footer {
   50% { transform: scale(1.2); }
 }
 
-/* PARTICLE EFFECTS */
 .particle {
   position: fixed;
   width: 8px;
@@ -548,7 +544,7 @@ footer {
 .particle.blue { background: linear-gradient(135deg, #4ECDC4, #6EE7E7); }
 .particle.pink { background: linear-gradient(135deg, #FF9FF3, #FFC8F3); }
 
-/* =============== CART POPUP =============== */
+/* =============== CART =============== */
 .cart-overlay {
   position: fixed;
   top: 0;
@@ -568,7 +564,6 @@ footer {
   visibility: visible;
 }
 
-/* POPUP CONTAINER */
 .cart-popup {
   position: fixed;
   top: 50%;
@@ -577,7 +572,7 @@ footer {
   width: 90%;
   max-width: 500px;
   max-height: 80vh;
-  background: white;
+  background: #ffffff;
   border-radius: 20px;
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
   opacity: 0;
@@ -586,7 +581,7 @@ footer {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.3s ease;
 }
 
 .cart-popup.active {
@@ -595,7 +590,6 @@ footer {
   transform: translate(-50%, -50%) scale(1);
 }
 
-/* POPUP HEADER */
 .cart-popup-header {
   display: flex;
   align-items: center;
@@ -635,7 +629,6 @@ footer {
   transform: rotate(90deg);
 }
 
-/* CART ITEMS LIST */
 .cart-items {
   flex: 1;
   overflow-y: auto;
@@ -659,7 +652,6 @@ footer {
   letter-spacing: 0.8px;
 }
 
-/* INDIVIDUAL CART ITEM */
 .cart-item {
   display: flex;
   align-items: center;
@@ -769,7 +761,6 @@ footer {
   transform: rotate(90deg);
 }
 
-/* POPUP FOOTER */
 .cart-popup-footer {
   padding: 24px 28px;
   border-top: 1px solid rgba(0, 0, 0, 0.06);
@@ -797,7 +788,6 @@ footer {
   font-size: 22px;
 }
 
-/* CHECKOUT BUTTON */
 .cart-checkout {
   width: 100%;
   padding: 16px 24px;
@@ -828,8 +818,361 @@ footer {
   transform: translateY(0);
 }
 
-/* RESPONSIVE CART POPUP */
+/* =============== POPUPS =============== */
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+  z-index: 9998;
+}
+
+.popup-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.popup-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -48%) scale(0.98);
+  width: min(920px, calc(100vw - 32px));
+  max-height: min(86vh, 760px);
+  background: #ffffff;
+  border-radius: 22px;
+  box-shadow: 0 22px 70px rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.25s ease;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+.popup-modal.active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.popup-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  border: none;
+  background: rgba(0, 0, 0, 0.06);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.popup-close:hover {
+  background: rgba(0, 0, 0, 0.12);
+}
+
+.popup-header {
+  padding: 18px 22px;
+  background: #fbf4f1;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.popup-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.popup-title h2 {
+  margin: 0;
+  font-size: 18px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.popup-body {
+  padding: 18px 22px 22px;
+  overflow-y: auto;
+}
+
+/* PRODUCT POPUP */
+.product-body {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 18px;
+}
+
+.product-left img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  border-radius: 18px;
+  background: #f5f5f5;
+}
+
+.product-desc {
+  margin-bottom: 14px;
+  color: rgba(0, 0, 0, 0.72);
+  line-height: 1.5;
+}
+
+.product-meta {
+  display: grid;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.product-price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 14px;
+  border-radius: 16px;
+  background: rgba(0, 0, 0, 0.04);
+  font-weight: 600;
+}
+
+.product-row {
+  display: grid;
+  gap: 6px;
+}
+
+.product-row label {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.75;
+}
+
+.product-row select {
+  height: 44px;
+  border-radius: 14px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  padding: 0 12px;
+  outline: none;
+}
+
+#product-popup .qty-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+#product-popup .quantity-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: #f0f0f0;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+#product-popup .quantity-btn:hover {
+  background: #e07a5f;
+  color: #fff;
+}
+
+#qty-value {
+  font-weight: 700;
+  min-width: 24px;
+  text-align: center;
+}
+
+.primary-btn {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #e07a5f;
+  color: #ffffff;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 18px;
+  cursor: pointer;
+  padding: 14px 18px;
+  min-height: 52px;
+  line-height: 1.15;
+  white-space: nowrap;
+}
+
+.primary-btn:hover {
+  background: #d65f3f;
+}
+
+.primary-btn:active {
+  transform: scale(0.99);
+}
+
+/* CHECKOUT FORM */
+.checkout-form {
+  padding: 20px 28px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.checkout-row {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.checkout-field {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.checkout-field label {
+  font-size: 13px;
+  color: #555;
+  letter-spacing: 0.4px;
+}
+
+.checkout-field input {
+  padding: 10px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,0.12);
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  background: #ffffff;
+}
+
+.checkout-field input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(224,122,95,0.18);
+  background: #fffdfb;
+}
+
+.checkout-field input.invalid {
+  border-color: #ff4d4f;
+  box-shadow: 0 0 0 2px rgba(255,77,79,0.18);
+}
+
+/* MESSAGE POPUP */
+.message-popup {
+  max-width: 420px;
+}
+
+.message-body {
+  padding: 24px 28px 10px;
+  font-size: 15px;
+  color: #444;
+  line-height: 1.6;
+}
+
+.message-popup.success #message-title i {
+  color: #2ecc71;
+}
+
+.message-popup.error #message-title i {
+  color: #ff4d4f;
+}
+
+.message-popup.error .cart-checkout {
+  background: #ff6b6b;
+  box-shadow: 0 6px 20px rgba(255, 107, 107, 0.3);
+}
+
+.message-popup.error .cart-checkout:hover {
+  background: #ff4d4f;
+  box-shadow: 0 10px 25px rgba(255, 107, 107, 0.4);
+}
+
+/* =============== RESPONSIVE =============== */
+@media (max-width: 820px) {
+  .product-body {
+    grid-template-columns: 1fr;
+  }
+
+  .product-left img {
+    height: 300px;
+  }
+
+  .popup-modal {
+    width: calc(100vw - 20px);
+    border-radius: 18px;
+  }
+}
+
 @media (max-width: 768px) {
+  header {
+    padding: 12px 14px;
+  }
+
+  header h1 {
+    font-size: 16px;
+    letter-spacing: 4px;
+  }
+
+  header nav a:first-child {
+    display: none;
+  }
+
+  nav {
+    gap: 6px;
+  }
+
+  nav a {
+    padding: 6px 12px;
+    font-size: 11px;
+  }
+
+  main {
+    padding: 24px 16px 60px;
+  }
+
+  .hero {
+    padding: 28px 22px;
+    margin: 24px 16px 40px;
+  }
+
+  .hero-inner {
+    flex-direction: column-reverse;
+    gap: 24px;
+    align-items: stretch;
+    text-align: center;
+  }
+
+  .hero-text h2 {
+    font-size: 22px;
+    letter-spacing: 1.5px;
+  }
+
+  .hero-text p {
+    font-size: 14px;
+    opacity: 0.92;
+  }
+
+  .hero-btn {
+    width: 100%;
+    padding: 14px 16px;
+  }
+
+  .hero-image-container {
+    max-width: 100%;
+  }
+
+  .hero-image-container img {
+    max-width: 100%;
+  }
+
+  .products-section {
+    padding: 0 8px;
+  }
+
   .cart-popup {
     width: 95%;
     max-height: 85vh;
@@ -855,179 +1198,65 @@ footer {
   .cart-popup-footer {
     padding: 18px 20px;
   }
-}
 
-/* =============== CHECKOUT FORM (ΜΕΣΑ ΣΤΟ POPUP) =============== */
-.checkout-form {
-  padding: 20px 28px 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.checkout-row {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
-.checkout-field {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.checkout-field label {
-  font-size: 13px;
-  color: #555;
-  letter-spacing: 0.4px;
-}
-
-.checkout-field input {
-  padding: 10px 12px;
-  border-radius: 999px;
-  border: 1px solid rgba(0,0,0,0.12);
-  font-size: 14px;
-  outline: none;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-  background: #ffffff;
-}
-
-.checkout-field input:focus {
-  border-color: var(--accent);
-  box-shadow: 0 0 0 2px rgba(224,122,95,0.18);
-  background: #fffdfb;
-}
-
-/* mobile tweak */
-@media (max-width: 768px) {
-  .checkout-form {
-    padding: 16px 20px 8px;
-  }
-}
-/* =============== CHECKOUT FORM (ΜΕΣΑ ΣΤΟ POPUP) =============== */
-.checkout-form {
-  padding: 20px 28px 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.checkout-row {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
-.checkout-field {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.checkout-field label {
-  font-size: 13px;
-  color: #555;
-  letter-spacing: 0.4px;
-}
-
-.checkout-field input {
-  padding: 10px 12px;
-  border-radius: 999px;
-  border: 1px solid rgba(0,0,0,0.12);
-  font-size: 14px;
-  outline: none;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-  background: #ffffff;
-}
-
-.checkout-field input:focus {
-  border-color: var(--accent);
-  box-shadow: 0 0 0 2px rgba(224,122,95,0.18);
-  background: #fffdfb;
-}
-
-/* κόκκινο border όταν έχει λάθος */
-.checkout-field input.invalid {
-  border-color: #ff4d4f;
-  box-shadow: 0 0 0 2px rgba(255,77,79,0.18);
-}
-
-/* mobile tweak */
-@media (max-width: 768px) {
   .checkout-form {
     padding: 16px 20px 8px;
   }
 }
 
-/* =============== MESSAGE POPUP (SUCCESS / ERROR) =============== */
-.message-popup {
-  max-width: 420px;
+@media (max-width: 520px) {
+  body {
+    font-size: 16px;
+  }
+
+  header {
+    padding: 10px 12px;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+  }
+
+  header h1 {
+    font-size: 14px;
+    letter-spacing: 1px;
+  }
+
+  header nav a {
+    padding: 10px;
+    border-radius: 12px;
+  }
+
+  .products-grid,
+  #products-grid {
+    grid-template-columns: 1fr !important;
+    gap: 14px;
+  }
+
+  .product-card h3 {
+    font-size: 13px;
+  }
+
+  .product-card .price {
+    font-size: 14px;
+  }
+
+  .product-card button,
+  .product-card .add-to-cart,
+  .buy-btn {
+    padding: 14px 16px;
+    border-radius: 14px;
+    font-size: 14px;
+  }
 }
 
-.message-body {
-  padding: 24px 28px 10px;
-  font-size: 15px;
-  color: #444;
-  line-height: 1.6;
+@media (max-width: 380px) {
+  header h1 {
+    font-size: 14px;
+  }
 }
 
-/* success / error variations */
-.message-popup.success #message-title i {
-  color: #2ecc71;
-}
-
-.message-popup.error #message-title i {
-  color: #ff4d4f;
-}
-
-/* error button λίγο πιο κόκκινο */
-.message-popup.error .cart-checkout {
-  background: #ff6b6b;
-  box-shadow: 0 6px 20px rgba(255, 107, 107, 0.3);
-}
-
-.message-popup.error .cart-checkout:hover {
-  background: #ff4d4f;
-  box-shadow: 0 10px 25px rgba(255, 107, 107, 0.4);
-}
-/* PREMIUM TITLE STYLE */
-.product-card h3 {
-  font-size: 18px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  margin-bottom: 10px;
-  position: relative;
-  padding-bottom: 6px;
-  color: #222;
-}
-
-.product-card h3::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 32%; /* Μπορείς να το αλλάξεις 20%–40% */
-  height: 2px;
-  background: var(--accent); /* Το ίδιο χρώμα με τα κουμπιά σου */
-  border-radius: 2px;
-  opacity: 0.8;
-  transition: width 0.3s ease;
-}
-
-.product-card:hover h3::after {
-  width: 60%; /* Λειτουργεί σαν μικρό animation όταν κάνεις hover */
-}
-/* ΔΙΠΛΟΣ PREMIUM ΤΙΤΛΟΣ ΠΡΟΪΟΝΤΟΣ */
-.product-title {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  margin: 12px 0 10px;
-  padding-bottom: 6px;
-  position: relative;
-}
+/* FIX: cart overlay πάντα πάνω από το header */
+.cart-overlay { z-index: 2000; }
+.cart-popup { z-index: 2001; }
 
 
