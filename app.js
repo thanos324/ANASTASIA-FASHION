@@ -700,3 +700,118 @@ CartAnimation.prototype.animateAddToCart = function(productId, sourceElement) {
   return originalAnimateAddToCart.call(this, productId, sourceElement);
 };
 
+// =========================
+//  5) PRODUCT POPUP (DETAILS)
+// =========================
+function setupProductPopup() {
+  const overlay = document.getElementById('product-overlay');
+  const popup   = document.getElementById('product-popup');
+  const close   = document.getElementById('product-close');
+
+  if (!overlay || !popup || !close) {
+    console.warn('⚠️ Λείπει το product popup HTML');
+    return;
+  }
+
+  const titleEl = document.getElementById('product-title');
+  const imgEl   = document.getElementById('product-image');
+  const priceEl = document.getElementById('product-price');
+  const descEl  = document.getElementById('product-desc');
+
+  const sizeEl  = document.getElementById('product-size');
+  const qtyVal  = document.getElementById('qty-value');
+  const qtyMinus= document.getElementById('qty-minus');
+  const qtyPlus = document.getElementById('qty-plus');
+  const addBtn  = document.getElementById('product-add-btn');
+
+  let currentCard = null;
+  let qty = 1;
+
+  function open() {
+    overlay.classList.add('active');
+    popup.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeIt() {
+    popup.classList.remove('active');
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+    currentCard = null;
+  }
+
+  close.addEventListener('click', closeIt);
+  overlay.addEventListener('click', closeIt);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && popup.classList.contains('active')) closeIt();
+  });
+
+  // Κλικ πάνω στην κάρτα ανοίγει details
+  document.addEventListener('click', (e) => {
+    const card = e.target.closest('.product-card');
+    if (!card) return;
+
+    // Αν πάτησε το κουμπί "Προσθήκη στο καλάθι", μην ανοίξεις popup (κρατάμε το old behavior)
+    if (e.target.closest('button')) return;
+
+    currentCard = card;
+
+    const name = card.querySelector('h3')?.textContent?.trim() || 'Προϊόν';
+    const img  = card.querySelector('img');
+    const priceText = card.querySelector('.price')?.textContent?.trim() || '0,00 €';
+
+    // optional περιγραφή από data-desc (αν δεν υπάρχει, βάλε default)
+    const desc = card.dataset.desc || 'Minimal premium κομμάτι για demo συλλογή. (Εκπαιδευτικό project)';
+
+    titleEl.textContent = name;
+    priceEl.textContent = priceText;
+    descEl.textContent  = desc;
+
+    if (img) {
+      imgEl.src = img.src;
+      imgEl.alt = img.alt || name;
+    }
+
+    qty = 1;
+    qtyVal.textContent = qty;
+    sizeEl.value = 'M';
+
+    open();
+  });
+
+  qtyMinus.addEventListener('click', () => {
+    qty = Math.max(1, qty - 1);
+    qtyVal.textContent = qty;
+  });
+
+  qtyPlus.addEventListener('click', () => {
+    qty = Math.min(99, qty + 1);
+    qtyVal.textContent = qty;
+  });
+
+  addBtn.addEventListener('click', () => {
+    if (!currentCard) return;
+
+    // Βάζουμε qty φορές στο cart (γρήγορο και απλό)
+    for (let i = 0; i < qty; i++) addToCart(currentCard);
+
+    // Μικρό “ok” feedback (χωρίς να αλλάζουμε το style σου)
+    addBtn.disabled = true;
+    const old = addBtn.innerHTML;
+    addBtn.innerHTML = '<i class="fa-solid fa-check"></i> Προστέθηκε';
+    setTimeout(() => {
+      addBtn.disabled = false;
+      addBtn.innerHTML = old;
+      closeIt();
+      openCartPopup(); // προαιρετικό: ανοίγει το cart να το δει
+    }, 550);
+  });
+}
+
+// Τρέχει μαζί με τα άλλα setups σου
+document.addEventListener('DOMContentLoaded', () => {
+  setupProductPopup();
+});
+
+
