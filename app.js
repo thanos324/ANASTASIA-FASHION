@@ -978,3 +978,7 @@ const heroBtn = document.querySelector(".hero-btn");
 heroBtn?.addEventListener("click", () => {
   document.body.classList.remove("lock-screen");
 });
+
+localStorage.clear();
+sessionStorage.clear();
+location.reload();
