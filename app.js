@@ -981,4 +981,6 @@ heroBtn?.addEventListener("click", () => {
 
 localStorage.clear();
 sessionStorage.clear();
-location.reload();
+console.log("Storage cleared ✅");
+
+
